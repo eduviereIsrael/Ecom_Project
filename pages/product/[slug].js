@@ -12,7 +12,7 @@ const ProductDetails = ({product, products}) => {
     const { image, name, details, price } = product;
 
     const [index, setIndex] = useState(0)
-    const  { decQty, incQty, qty, onAdd }  = useStateContext();
+    const  { decQty, incQty, qty, onAdd, setQty }  = useStateContext();
     // console.log(qty)
 
 
@@ -25,7 +25,7 @@ const ProductDetails = ({product, products}) => {
                 </div>
                 <div className='small-images-container'>
                   {image?.map((item, i) => {
-                    console.log(image)
+                    // console.log(image)
 
                     return <img src={urlFor(item)}
                       key = {i}
@@ -60,7 +60,10 @@ const ProductDetails = ({product, products}) => {
               <div className='buttons'>
                 <button type='button'
                   className='add-to-cart'
-                  onClick={() => onAdd(product, qty)}>
+                  onClick={() => {
+                    onAdd(product, qty)
+                    setQty(1)
+                    }}>
                     Add to Cart
                   </button>
                 <button type='button'
@@ -119,12 +122,11 @@ export const getStaticProps = async ({ params: { slug }}) => {
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
 
-  console.log(product);
+  // console.log(product);
 
   return {
     props: { products, product }
   }
 }
   
-
 export default ProductDetails

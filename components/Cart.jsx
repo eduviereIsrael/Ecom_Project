@@ -26,7 +26,7 @@ const Cart = () => {
           onClick={() => setShowCart(false)}>
             <AiOutlineLeft />
             <span className='heading'>Your Cart</span>
-            <span classNamecart-num-items>({totalQuantites}  items)</span>
+            <span className="cart-num-items">({totalQuantites}  items)</span>
           </button>
           {cartItems.length < 1 && (
             <div className='empty-cart'>
@@ -48,16 +48,16 @@ const Cart = () => {
                 <img src = {urlFor(item?.image[0])} className='cart-product-image' />
                 <div className='item-desc'>
                   <div className='flex top'>
-                    <h5>{item.name}</h5>
-                    <h4>${item.price * item.quantity}</h4>
+                    <h5>{item?.name}</h5>
+                    <h4>${item?.price * item?.quantity}</h4>
                   </div>
                   <div className='flex bottom'>
                     <div>
                     <p className='quantity-desc'>
-                      <span className='minus' 
-                        onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus/></span>
-                      <span className='num' >{item.quantity}</span>
-                      <span className='plus' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus/></span>
+                      {/* <span className='minus' 
+                        onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus/></span> */}
+                      <span className='num' >{item?.quantity}</span>
+                      {/* <span className='plus' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus/></span> */}
                     </p>
                     </div>
                     <button type='button' className='remove-item' onClick={() => onRemove(item)}>
